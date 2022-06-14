@@ -1,0 +1,303 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "eoa",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_pollName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pollDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_candidates",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string",
+						"name": "_pollType",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "cancelPoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "endBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "endPoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPollType",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "candidate",
+						"type": "string"
+					}
+				],
+				"name": "getResultOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollDuration",
+						"type": "uint256"
+					}
+				],
+				"name": "increasePollDuration",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "org",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pollName",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pollState",
+				"outputs": [
+					{
+						"internalType": "enum Poll.PollState",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pollType",
+				"outputs": [
+					{
+						"internalType": "enum Poll.PollType",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "renamePoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startBlock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "candidate",
+						"type": "string"
+					}
+				],
+				"name": "voteFor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Soumajit Das",
+			"kind": "dev",
+			"methods": {
+				"cancelPoll()": {
+					"details": "Change the pollState to PollState.Canceled"
+				},
+				"constructor": {
+					"details": "Creates Poll with given data",
+					"params": {
+						"_candidates": "The array of the candidate IDs",
+						"_pollName": "The name of the poll",
+						"_pollType": "The type of the poll (Public/Private)",
+						"eoa": "The Org account address",
+						"pollDuration": "It counts the average block numbers between the start and end date"
+					}
+				},
+				"endPoll()": {
+					"details": "Change the pollState to PollState.Ended"
+				},
+				"getResultOf(string)": {
+					"params": {
+						"candidate": "The ID of the candidate whose score we want to get"
+					},
+					"returns": {
+						"_0": "result[candidate] The count of the votes of the candidate"
+					}
+				},
+				"increasePollDuration(uint256)": {
+					"params": {
+						"pollDuration": "The number of blocks that we want to add with end block to increase the duration"
+					}
+				},
+				"renamePoll(string)": {
+					"params": {
+						"name": "The new name that the org wants to set for the poll"
+					}
+				},
+				"voteFor(string)": {
+					"details": "The address of the voter gets stored in isVoted mappingThe count of the votes of the candidate increases by 1",
+					"params": {
+						"candidate": "The ID of the candidate whom the voters want to give their vote"
+					}
+				}
+			},
+			"title": "The Poll Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"cancelPoll()": {
+					"notice": "Only Org can cancel the poll before the end date"
+				},
+				"endPoll()": {
+					"notice": "Only Org can end the poll before the end date"
+				},
+				"getResultOf(string)": {
+					"notice": "If the poll is Public then it returns the result to allElse if the poll is private then only Org can access the result"
+				},
+				"increasePollDuration(uint256)": {
+					"notice": "Only the Org can increase the Poll duration (End Date)"
+				},
+				"renamePoll(string)": {
+					"notice": "Only the Org can rename the Poll"
+				},
+				"voteFor(string)": {
+					"notice": "Voters can vote between the start date and the end date"
+				}
+			},
+			"notice": "Every time an org creates a new poll, an instance of this contract gets created",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/pollio.sol": "Poll"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/pollio.sol": {
+			"keccak256": "0x6a9850ee9834cdbe522957777bd36d667e6c5b331e084d7208fda6aa4b98eb29",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3f5fee8fdac79350303eb288b1ecc5c222c19988560f26329cdcd3f79e3c3a67",
+				"dweb:/ipfs/QmV2QcTDPhn9E9yJ1NcNfNg6pDUdYBnTKpt44KsaRqc67b"
+			]
+		}
+	},
+	"version": 1
+}

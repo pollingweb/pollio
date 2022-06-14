@@ -1,0 +1,128 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "pollName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pollDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_candidates",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string",
+						"name": "_pollType",
+						"type": "string"
+					}
+				],
+				"name": "createPoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPreviousPolls",
+				"outputs": [
+					{
+						"internalType": "contract Poll[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Soumajit Das",
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Declaring the owner"
+				},
+				"createPoll(string,uint256,string[],string)": {
+					"details": "Creates an instance of the poll contract and stores it in the DB",
+					"params": {
+						"_candidates": "The array of the candidate IDs",
+						"_pollType": "The type of the poll (Public/Private)",
+						"pollDuration": "It counts the average block numbers between the start and end date",
+						"pollName": "The name of the poll"
+					}
+				}
+			},
+			"title": "The main contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createPoll(string,uint256,string[],string)": {
+					"notice": "Org creating a new Poll"
+				},
+				"getPreviousPolls()": {
+					"notice": "If the Organization had previous polls, then it returns an array of all pollsElse returns an empty array"
+				}
+			},
+			"notice": "It stores the DB that contains all the Org address and their previous polls",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/pollio.sol": "PollIO"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/pollio.sol": {
+			"keccak256": "0x6a9850ee9834cdbe522957777bd36d667e6c5b331e084d7208fda6aa4b98eb29",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3f5fee8fdac79350303eb288b1ecc5c222c19988560f26329cdcd3f79e3c3a67",
+				"dweb:/ipfs/QmV2QcTDPhn9E9yJ1NcNfNg6pDUdYBnTKpt44KsaRqc67b"
+			]
+		}
+	},
+	"version": 1
+}
