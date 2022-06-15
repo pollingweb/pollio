@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: node:alpine
-    container_name: pollio
+    container_name: pollioweb-api
     restart: unless-stopped
     depends_on:
       - db
