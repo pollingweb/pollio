@@ -52,17 +52,20 @@ const Camera = (props) => {
         async () => {
             const imageSrc = await webcamRef.current.getScreenshot();
 
-            const formData = new FormData();
-            formData.append("field-name", imageSrc);
+            const body = {
+                name :  "strange.png",
+                base64 : imageSrc
+            }
 
-            const obj = await axios.post(process.env.REACT_APP_API_BASEURL+'/api/upload', formData)
+            const res = await axios.post(process.env.REACT_APP_API_BASEURL+'/api/upload/base64', body)
 
-            console.log(obj)
-
+            if (res.status === 200) {
+                props.setUrl(res.data.url)
+            }
             
-            // setImg(imageSrc);
+            setImg(imageSrc);
         },
-        [webcamRef]
+        [webcamRef,props]
     );
     return (
         <Container>

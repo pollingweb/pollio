@@ -95,7 +95,7 @@ const SignUp = ({ walletAddress }) => {
 	const [state, setState] = useState({
 		name: '',
 		verfied: false,
-		photoUrl: 'www.g.com',
+		photoUrl: `${process.env.REACT_APP_API_BASEURL}/uploads/image/default.jpg`,
 		password: '',
 		email: '',
 		type: 'voter',
@@ -137,6 +137,13 @@ const SignUp = ({ walletAddress }) => {
 		}));
 	};
 
+	const setPhotoUrl = (url) => {
+		setState((previous) => ({
+			...previous,
+			photoUrl : url,
+		}));
+	}
+
 	return (
 		<>
 			<SignUpContainer>
@@ -171,14 +178,16 @@ const SignUp = ({ walletAddress }) => {
 							value={state.password}
 							onChange={handleChange}
 						/>
-						<div onClick={showCamera} style={{ cursor: 'pointer' }}>
-							<InputFeild
-								Icon={BiCamera}
-								type='text'
-								placeholder='Take a picture'
-								disable={true}
-							/>
-						</div>
+						
+						<InputFeild
+							Icon={BiCamera}
+							type='text'
+							placeholder='Take a picture'
+							cam={true}
+							value={state.photoUrl}
+							showCam={showCamera}
+						/>
+						
 
 						{state.type === 'organizer' && (
 							<>
@@ -194,7 +203,7 @@ const SignUp = ({ walletAddress }) => {
 									Icon={BiEnvelope}
 									type='text'
 									name='phone'
-									placeholder='Enter your emphoneail'
+									placeholder='Enter your phone'
 									value={state.phone}
 									onChange={handleChange}
 								/>
@@ -234,7 +243,7 @@ const SignUp = ({ walletAddress }) => {
 					</Right>
 				</Main>
 
-				{camera && <Camera hide={() => setCamera(false)} />}
+				{camera && <Camera hide={() => setCamera(false)} setUrl={setPhotoUrl} />}
 			</SignUpContainer>
 		</>
 	);

@@ -1,31 +1,28 @@
 version: '3'
 
 services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    image: node:alpine
-    container_name: pollioweb-client
+  db:
+    image: mysql
+    container_name: db
     restart: unless-stopped
-    depends_on:
-      - web
     env_file: .env
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      - MYSQL_DATABASE=$NAME
+      - MYSQL_USER=$USER_NAME
+      - MYSQL_PASSWORD=$PASSWORD
+      - MYSQL_ROOT_PASSWORD=$PASSWORD
     ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/home/node/client
-      - node_modules:/home/node/client/node_modules
+      - "3306:3306"
+    volumes:     
+      - dbdata:/data/db
     networks:
-      - app-network
-
+      - app-network  
+      
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    image: node:alpine
+    image: node
     container_name: pollio
     restart: unless-stopped
     depends_on:
@@ -43,23 +40,26 @@ services:
       - node_modules:/home/node/app/node_modules
     networks:
       - app-network
-
-  db:
-    image: mysql
-    container_name: db
+      
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: node:alpine
+    container_name: pollioweb-client
     restart: unless-stopped
-    env_file: .env
+    depends_on:
+      - web
     environment:
-      - MYSQL_DATABASE=$NAME
-      - MYSQL_USER=$USER_NAME
-      - MYSQL_PASSWORD=$PASSWORD
-      - MYSQL_ROOT_PASSWORD=$PASSWORD
+      - CHOKIDAR_USEPOLLING=true
     ports:
-      - "3306:3306"
-    volumes:     
-      - dbdata:/data/db
+      - "3000:3000"
+    volumes:
+      - ./client:/home/node/client
     networks:
-      - app-network  
+      - app-network
+
+
 
 networks:
   app-network:
