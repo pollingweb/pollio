@@ -34,7 +34,7 @@ services:
       - PASSWORD=$PASSWORD
       - HOST=db
     ports:
-      - "4000:4000"
+      - "$SERVER_PORT:$SERVER_PORT"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
