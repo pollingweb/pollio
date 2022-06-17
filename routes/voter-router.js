@@ -12,7 +12,7 @@ const router = new Router();
 router.post("/",
   body('id').isString(),
   body('name').isString(),
-  body('photoUrl').isString().isURL(),
+  // body('photoUrl').isString().isURL(),
   body('email').isEmail(),
   (req, res) => {
 

@@ -202,7 +202,7 @@ function Home({ web3, walletAddress, contract }) {
 			});
 
 			if (transactionID) {
-				const updateVoteStatus = await axios.post(
+				const updateVoteStatus = await axios.put(
 					`${
 						process.env.REACT_APP_API_URL || 'http://localhost:4000'
 					}/api/voter/${walletAddress}/poll/${to}`
