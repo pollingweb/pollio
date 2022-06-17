@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: node
+    image: node:alpine
     container_name: pollio
     restart: unless-stopped
     depends_on:
