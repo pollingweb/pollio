@@ -172,9 +172,9 @@ const SignUp = ({ walletAddress }) => {
 						/>
 						<InputFeild
 							Icon={BiIdCard}
-							type='text'
+							type='password'
 							name='password'
-							placeholder='Enter Passwprd'
+							placeholder='Enter Password'
 							value={state.password}
 							onChange={handleChange}
 						/>
